@@ -1,0 +1,99 @@
+di<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Lumina is a modern standard and scientific calculator built with HTML, CSS, and JavaScript." />
+  <title>Lumina — Scientific Calculator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="ambient ambient-one" aria-hidden="true"></div>
+  <div class="ambient ambient-two" aria-hidden="true"></div>
+
+  <main class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Lumina home">
+        <span class="brand-mark">+</span>
+        <span><strong>Lumina</strong><small>precision, simplified</small></span>
+      </a>
+      <div class="topbar-actions">
+        <button class="icon-button" id="themeToggle" type="button" aria-label="Switch to light theme" title="Toggle theme">☼</button>
+        <button class="icon-button" id="historyToggle" type="button" aria-label="Toggle calculation history" aria-expanded="false" title="Show history">◷</button>
+      </div>
+    </header>
+
+    <section class="workspace" aria-label="Calculator workspace">
+      <div class="calculator-card">
+        <div class="mode-row">
+          <div class="mode-switch" role="group" aria-label="Calculator mode">
+            <button class="mode-button active" data-mode="standard" type="button">Standard</button>
+            <button class="mode-button" data-mode="scientific" type="button">Scientific</button>
+          </div>
+          <button class="angle-button" id="angleToggle" type="button" aria-label="Toggle angle unit">DEG</button>
+        </div>
+
+        <div class="display" aria-live="polite" aria-atomic="true">
+          <div class="display-meta"><span id="memoryIndicator">No memory</span><span id="expressionLabel">Ready</span></div>
+          <div class="expression" id="expression">0</div>
+          <div class="result" id="result">0</div>
+        </div>
+
+        <div class="keypad scientific-keys" id="scientificKeys" aria-label="Scientific functions">
+          <button class="key function" data-action="insert" data-value="sin(" type="button">sin</button>
+          <button class="key function" data-action="insert" data-value="cos(" type="button">cos</button>
+          <button class="key function" data-action="insert" data-value="tan(" type="button">tan</button>
+          <button class="key function" data-action="insert" data-value="log(" type="button">log</button>
+          <button class="key function" data-action="insert" data-value="ln(" type="button">ln</button>
+          <button class="key function" data-action="insert" data-value="sqrt(" type="button">√</button>
+          <button class="key function" data-action="insert" data-value="^2" type="button">x²</button>
+          <button class="key function" data-action="insert" data-value="^" type="button">xʸ</button>
+          <button class="key function" data-action="insert" data-value="π" type="button">π</button>
+          <button class="key function" data-action="insert" data-value="e" type="button">e</button>
+          <button class="key function" data-action="insert" data-value="(" type="button">(</button>
+          <button class="key function" data-action="insert" data-value=")" type="button">)</button>
+        </div>
+
+        <div class="keypad main-keys">
+          <button class="key utility" data-action="clear" type="button">AC</button>
+          <button class="key utility" data-action="backspace" type="button" aria-label="Backspace">⌫</button>
+          <button class="key utility" data-action="percent" type="button">%</button>
+          <button class="key operator" data-action="insert" data-value="÷" type="button">÷</button>
+
+          <button class="key" data-action="insert" data-value="7" type="button">7</button>
+          <button class="key" data-action="insert" data-value="8" type="button">8</button>
+          <button class="key" data-action="insert" data-value="9" type="button">9</button>
+          <button class="key operator" data-action="insert" data-value="×" type="button">×</button>
+
+          <button class="key" data-action="insert" data-value="4" type="button">4</button>
+          <button class="key" data-action="insert" data-value="5" type="button">5</button>
+          <button class="key" data-action="insert" data-value="6" type="button">6</button>
+          <button class="key operator" data-action="insert" data-value="−" type="button">−</button>
+
+          <button class="key" data-action="insert" data-value="1" type="button">1</button>
+          <button class="key" data-action="insert" data-value="2" type="button">2</button>
+          <button class="key" data-action="insert" data-value="3" type="button">3</button>
+          <button class="key operator" data-action="insert" data-value="+" type="button">+</button>
+
+          <button class="key utility" data-action="sign" type="button">±</button>
+          <button class="key" data-action="insert" data-value="0" type="button">0</button>
+          <button class="key" data-action="insert" data-value="." type="button">.</button>
+          <button class="key equals" data-action="calculate" type="button">=</button>
+        </div>
+        <p class="keyboard-hint"><span class="keyboard-icon">⌨</span> Keyboard supported <span class="hint-divider">•</span> Press <kbd>Enter</kbd> to calculate</p>
+      </div>
+
+      <aside class="history-panel" id="historyPanel" aria-label="Calculation history">
+        <div class="history-heading"><div><span class="eyebrow">Your workspace</span><h2>Recent calculations</h2></div><button id="clearHistory" class="text-button" type="button">Clear all</button></div>
+        <div class="history-list" id="historyList"><div class="empty-history"><span>⌁</span><p>Your calculations will appear here.</p></div></div>
+        <div class="tip-card"><span class="tip-icon">✦</span><div><strong>Quick tip</strong><p>Use <kbd>Esc</kbd> to reset your current calculation anytime.</p></div></div>
+      </aside>
+    </section>
+    <footer><span>Built with HTML, CSS & JavaScript</span><span>v1.0.0</span></footer>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
