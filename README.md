@@ -1,4 +1,4 @@
-# Lumina Calculator
+Calculator
 
 A polished, responsive calculator built with **HTML, CSS, and vanilla JavaScript**. It includes standard arithmetic, scientific functions, keyboard support, calculation history, theme switching, and a mobile-friendly interface.
 
